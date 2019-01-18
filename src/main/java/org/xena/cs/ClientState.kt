@@ -19,6 +19,7 @@ package org.xena.cs
 import org.xena.offsets.offsets.EngineOffsets.dwViewAngles
 import org.xena.plugin.utils.Vector
 import org.xena.process
+import org.xena.utils.SignOnState
 
 class ClientState : GameObject() {
 	
@@ -27,6 +28,8 @@ class ClientState : GameObject() {
 	var inGame: Long = 0
 	
 	var maxPlayer: Long = 0
+	
+	var state: SignOnState = SignOnState.MAIN_MENU
 	
 	private val angleVector = Vector()
 	

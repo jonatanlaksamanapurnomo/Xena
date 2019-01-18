@@ -1,5 +1,6 @@
 package org.xena;
 
+import org.xena.cs.Bones;
 import org.xena.keylistener.NativeKeyUtils;
 
 import java.awt.event.KeyEvent;
@@ -9,12 +10,14 @@ import java.awt.event.KeyEvent;
  */
 public final class Settings {
 	
-	public static final boolean DEBUG = false;
+	public static final boolean DEBUG = true;
+	
+	public static final Bones TARGET_BONE = Bones.HEAD;
 	
 	/**
 	 * Aim assist settings
 	 */
-	public static final float AIM_ASSIST_STRENGTH = 30f;
+	public static final float AIM_ASSIST_STRENGTH = 40f;
 	public static final int AIM_ASSIST_FOV = 180;
 	
 	/**

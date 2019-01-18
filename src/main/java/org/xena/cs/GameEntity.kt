@@ -16,10 +16,11 @@
 
 package org.xena.cs
 
+import org.xena.Settings
 import org.xena.offsets.OffsetManager.engineModule
 import org.xena.offsets.OffsetManager.process
 import org.xena.offsets.offsets.ClientOffsets.bDormant
-import org.xena.offsets.offsets.EngineOffsets.dwClientState_State
+import org.xena.offsets.offsets.EngineOffsets.dwClientState
 import org.xena.offsets.offsets.EngineOffsets.dwViewAngles
 import org.xena.offsets.offsets.NetVarOffsets.bMoveType
 import org.xena.offsets.offsets.NetVarOffsets.bSpottedByMask
@@ -89,7 +90,7 @@ open class GameEntity : GameObject() {
 		viewOffsets.y = process().readFloat(address() + vecViewOffset + 4)
 		viewOffsets.z = process().readFloat(address() + vecViewOffset + 8)
 		
-		val anglePointer = engineModule().readUnsignedInt(dwClientState_State.toLong())
+		val anglePointer = engineModule().readUnsignedInt(dwClientState.toLong())
 		viewAngles.x = process().readFloat(anglePointer + dwViewAngles)
 		viewAngles.y = process().readFloat(anglePointer + dwViewAngles + 4)
 		viewAngles.z = process().readFloat(anglePointer + dwViewAngles + 8)
@@ -97,7 +98,7 @@ open class GameEntity : GameObject() {
 		val boneMatrix = process().readUnsignedInt(address() + dwBoneMatrix)
 		if (boneMatrix > 0) {
 			//Bones bone = Bones.roll();
-			val bone = Bones.UPPER_CHEST2
+			val bone = Settings.TARGET_BONE
 			try {
 				bones.x = process().readFloat(boneMatrix + (0x30 * bone.id) + 0x0C)
 				bones.y = process().readFloat(boneMatrix + (0x30 * bone.id) + 0x1C)
@@ -132,6 +133,7 @@ open class GameEntity : GameObject() {
 		
 		return isSpotted as Boolean
 	}
+	
 	fun distanceTo(vector: Vector, target: Vector) = abs(vector.x - target.x) + abs(vector.y - target.y) + abs(vector.z - target.z)
 	
 	val eyePos by lazy { viewOffsets.plus(viewOrigin) }

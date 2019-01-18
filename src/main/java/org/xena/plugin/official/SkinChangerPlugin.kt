@@ -20,15 +20,18 @@ import org.xena.Indexer
 import org.xena.cs.ClientState
 import org.xena.cs.GameEntity
 import org.xena.cs.Me
-import org.xena.offsets.offsets.ClientOffsets.flFallbackWear
-import org.xena.offsets.offsets.ClientOffsets.iEntityQuality
-import org.xena.offsets.offsets.ClientOffsets.iItemIDHigh
-import org.xena.offsets.offsets.ClientOffsets.nFallbackPaintKit
-import org.xena.offsets.offsets.ClientOffsets.nFallbackSeed
-import org.xena.offsets.offsets.ClientOffsets.nFallbackStatTrak
+import org.xena.cs.Weapons
+import org.xena.keylistener.NativeKeyUtils
+import org.xena.offsets.offsets.NetVarOffsets.flFallbackWear
+import org.xena.offsets.offsets.NetVarOffsets.iEntityQuality
+import org.xena.offsets.offsets.NetVarOffsets.iItemIDHigh
+import org.xena.offsets.offsets.NetVarOffsets.nFallbackPaintKit
+import org.xena.offsets.offsets.NetVarOffsets.nFallbackSeed
+import org.xena.offsets.offsets.NetVarOffsets.nFallbackStatTrak
 import org.xena.plugin.Plugin
 import org.xena.plugin.PluginManifest
 import org.xena.process
+import java.awt.event.KeyEvent
 
 @PluginManifest(name = "Skin Changer", description = "Skin changer plugin.")
 class SkinChangerPlugin : Plugin() {
@@ -39,16 +42,18 @@ class SkinChangerPlugin : Plugin() {
 	private val DEFAULT_QUALITY = 1
 	
 	override fun pulse(clientState: ClientState, me: Me, entities: Indexer<GameEntity>) {
-		/*  for (weaponData in me.weaponIds) {
-			  val weapon = Weapons.byID(weaponData[0].toInt())
-			  if (weapon != null && weapon.customSkin) {
-				  for (i in 0..4) {
-					  appySkin(weaponData[1], weapon.skin)
-				  }
-			  }
-		  }*/
-		//if (NativeKeyUtils.isKeyDown(KeyEvent.VK_F1))
-		//engineModule.writeInt(clientState.address() + m_dwForceFullUpdate, -1)
+		for (weaponData in me.weaponIds) {
+			val weapon = Weapons.byID(weaponData[0].toInt())
+			if (weapon != null && weapon.customSkin) {
+				for (i in 0..4) {
+					appySkin(weaponData[1], weapon.skin)
+				}
+			}
+		}
+		
+		if (NativeKeyUtils.isKeyDown(KeyEvent.VK_F1)) {
+			process.writeInt(clientState.address() + 0x174, -1)
+		}
 	}
 	
 	private fun appySkin(weaponAddress: Long, skinID: Int, skinSeed: Int = DEFAULT_SKIN_SEED, statTrak: Int = DEFAULT_STATTRAK, wear: Float = DEFAULT_WEAR, quality: Int = DEFAULT_QUALITY) {

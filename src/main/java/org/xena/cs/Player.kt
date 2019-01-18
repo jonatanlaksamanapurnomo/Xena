@@ -16,8 +16,11 @@
 
 package org.xena.cs
 
+import org.xena.offsets.OffsetManager.clientModule
 import org.xena.offsets.OffsetManager.process
-import org.xena.offsets.offsets.ClientOffsets.iItemDefinitionIndex
+import org.xena.offsets.offsets.ClientOffsets.dwEntityList
+import org.xena.offsets.offsets.NetVarOffsets.hMyWeapons
+import org.xena.offsets.offsets.NetVarOffsets.iItemDefinitionIndex
 
 open class Player : GameEntity() {
 	
@@ -27,18 +30,18 @@ open class Player : GameEntity() {
 		super.update()
 		isBombCarrier = false
 		
-		/*for (i in weaponIds.indices) {
-			val currentWeaponIndex = process().readUnsignedInt(address() + m_hMyWeapons.toLong() + ((i - 1) * 0x04).toLong()) and 0xFFF
-			val weaponAddress = clientModule().readUnsignedInt(m_dwEntityList + (currentWeaponIndex - 1) * 0x10)
+		for (i in weaponIds.indices) {
+			val currentWeaponIndex = process().readUnsignedInt(address() + hMyWeapons.toLong() + ((i - 1) * 0x04).toLong()) and 0xFFF
+			val weaponAddress = clientModule().readUnsignedInt(dwEntityList + (currentWeaponIndex - 1) * 0x10)
 			
 			if (weaponAddress > 0) {
 				processWeapon(weaponAddress, i, false)
 			}
-		}*/
+		}
 	}
 	
 	open fun processWeapon(weaponAddress: Long, index: Int, active: Boolean): Int {
-		val weaponId = process().readInt(weaponAddress + iItemDefinitionIndex)
+		val weaponId = process().readShort(weaponAddress + iItemDefinitionIndex)
 		if (weaponId == Weapons.C4.id) {
 			isBombCarrier = true
 			

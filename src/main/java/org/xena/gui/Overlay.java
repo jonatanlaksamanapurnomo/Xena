@@ -105,10 +105,10 @@ public final class Overlay extends JWindow {
 		status = new JLabel(getStatus(), SwingConstants.LEFT);
 		status.setFont(new Font("Sans Serif", Font.BOLD, 12));
 		status.setForeground(Color.WHITE);
-		status.setBounds(3, height, getWidth() - 5, 50);
+		status.setBounds(3, height, getWidth() - 5, 70);
 		add(status);
 		
-		height += 50;
+		height += 70;
 		setSize(getWidth(), height);
 		
 		HEIGHT = height;
@@ -132,6 +132,6 @@ public final class Overlay extends JWindow {
 	}
 	
 	private String getStatus() {
-		return "<html>Status: Running<br>Cycle: " + xena.getLastCycle() + "(max=" + Xena.CYCLE_TIME + ")<br>Game mode: " + xena.getGameMode() + "</html>".intern();
+		return "<html>Status: Running<br>Cycle: " + xena.getLastCycle() + "(max=" + Xena.CYCLE_TIME + ")<br>Game mode: " + xena.getGameMode() + ")<br>State: " + xena.getState().toString() + "</html>".intern();
 	}
 }

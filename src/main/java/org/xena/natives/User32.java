@@ -37,4 +37,8 @@ public class User32 {
 	
 	public static native WinUser.HHOOK SetWindowsHookExW(int var1, WinUser.HOOKPROC var2, WinDef.HINSTANCE var3, int var4);
 	
+	public static native long GetForegroundWindow();
+	
+	public static native WinDef.HWND FindWindowA(String lpClassName, String lpWindowName);
+	
 }

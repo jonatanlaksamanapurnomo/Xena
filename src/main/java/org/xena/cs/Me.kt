@@ -55,16 +55,6 @@ class Me : Player() {
 				processWeapon(weaponAddress, i, true)
 			}
 		}
-		/*		if (activeWeapon.getWeaponID() == 42 || activeWeapon.getWeaponID() == 516) {
-		int modelAddress = process().readInt(address() + m_hViewModel) & 0xFFF;
-		long ds = clientModule().readUnsignedInt(m_dwEntityList + (modelAddress - 1) * 0x10);
-		process().writeInt(ds + m_nModelIndex, 403);
-		process().writeInt(weaponAddress + iViewModelIndex, 403);
-		process().writeInt(weaponAddress + iWorldModelIndex, 404);
-		process().writeInt(weaponAddress + m_iWorldDroppedModelIndex, 405);
-		process().writeInt(weaponAddress + m_iItemDefinitionIndex, 515);
-		process().writeInt(weaponAddress + m_iWeaponID, 516);
-	}*/
 		
 		target = null
 		val crosshair = process().readUnsignedInt(address() + iCrossHairID) - 1
@@ -81,6 +71,7 @@ class Me : Player() {
 	override fun processWeapon(weaponAddress: Long, index: Int, active: Boolean): Int {
 		val weaponId = super.processWeapon(weaponAddress, index, active)
 		if (active) {
+			activeWeapon.setAddress(weaponAddress)
 			activeWeapon.weaponID = weaponId.toLong()
 			activeWeapon.canReload = process().readBoolean(weaponAddress + m_bCanReload)
 			activeWeapon.clip1 = process().readUnsignedInt(weaponAddress + iClip1)
@@ -88,7 +79,6 @@ class Me : Player() {
 		}
 		return weaponId
 	}
-	
 	
 	private val closestTargetVector by lazy { Vector() }
 	

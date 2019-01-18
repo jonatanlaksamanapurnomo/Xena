@@ -44,13 +44,6 @@ object ClientOffsets {
 	@JvmField var dwViewMatrix: Int = 0
 	@JvmField var dwEntityList: Int = 0
 	@JvmField var dwLocalPlayer: Int = 0
-	@JvmField var nFallbackPaintKit: Int = 0
-	@JvmField var nFallbackSeed: Int = 0
-	@JvmField var nFallbackStatTrak: Int = 0
-	@JvmField var iEntityQuality: Int = 0
-	@JvmField var flFallbackWear: Int = 0
-	@JvmField var iItemDefinitionIndex: Int = 0
-	@JvmField var iItemIDHigh: Int = 0
 	@JvmField var bDormant: Int = 0
 	@JvmField var dwGameRulesProxy: Int = 0
 	

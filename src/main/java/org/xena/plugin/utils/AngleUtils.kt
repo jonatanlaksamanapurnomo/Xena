@@ -22,7 +22,7 @@ import org.xena.cs.Me
 import org.xena.cs.Player
 import org.xena.cs.Weapons
 import org.xena.engineModule
-import org.xena.offsets.offsets.EngineOffsets.dwClientState_State
+import org.xena.offsets.offsets.EngineOffsets.dwClientState
 import org.xena.offsets.offsets.EngineOffsets.dwViewAngles
 import org.xena.plugin.Plugin
 import org.xena.process
@@ -116,7 +116,7 @@ class AngleUtils(private val plugin: Plugin, private val smoothing: Float, priva
 		if (isNaN(angles.x) || isNaN(angles.y) || isNaN(angles.z)) {
 			return
 		}
-		val anglePointer = engineModule.readUnsignedInt(dwClientState_State.toLong())
+		val anglePointer = engineModule.readUnsignedInt(dwClientState.toLong())
 		process.writeFloat(anglePointer + dwViewAngles, angles.x)
 		process.writeFloat(anglePointer + dwViewAngles.toLong() + 4, angles.y)
 	}
