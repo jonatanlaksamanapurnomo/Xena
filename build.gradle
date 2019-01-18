@@ -19,7 +19,7 @@ buildscript {
     ext.project_description = 'Lightweight, lighting-fast Java Based Cross-Platform CSGO Cheat'
     ext.project_group = 'com.github.'
     ext.project_artifact = 'Xena'
-    ext.project_version = '1.7.1'
+    ext.project_version = '1.7.2'
 
     ext.kotlin_version = '1.3.11'
 
