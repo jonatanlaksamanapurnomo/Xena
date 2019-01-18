@@ -45,4 +45,9 @@ public final class Settings {
 	public static final int[] ESP_T = {224, 175, 86, 153};
 	public static final int[] ESP_BOMB_CARRY = {255, 0, 0, 200};
 	
+	/**
+	 * bunnyhop settings
+	 */
+	public static final int BUNNY_HOP_KEY = KeyEvent.VK_SPACE;
+	
 }

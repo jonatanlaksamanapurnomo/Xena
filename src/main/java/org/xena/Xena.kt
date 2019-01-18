@@ -37,10 +37,7 @@ import org.xena.offsets.offsets.NetVarOffsets.dwIndex
 import org.xena.offsets.offsets.NetVarOffsets.iTeamNum
 import org.xena.offsets.offsets.NetVarOffsets.m_SurvivalGameRuleDecisionTypes
 import org.xena.plugin.PluginManager
-import org.xena.plugin.official.AimAssistPlugin
-import org.xena.plugin.official.ForceAimPlugin
-import org.xena.plugin.official.GlowESPPlugin
-import org.xena.plugin.official.NoFlashPlugin
+import org.xena.plugin.official.*
 import org.xena.utils.Logging
 import org.xena.utils.SignOnState
 import java.lang.System.currentTimeMillis
@@ -82,6 +79,7 @@ object Xena : NativeKeyListener {
 		//pluginManager.add(SpinBotPlugin())
 		pluginManager.add(NoFlashPlugin())
 		pluginManager.add(AimAssistPlugin())
+		pluginManager.add(BunnyHopPlugin())
 		
 		println("We're all set. Welcome to the new Xena platform!")
 		println("Use numpad or ALT+nums to toggle corresponding plugins.")
