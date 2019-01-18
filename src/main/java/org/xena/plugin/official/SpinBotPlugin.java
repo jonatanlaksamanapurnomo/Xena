@@ -51,7 +51,7 @@ public final class SpinBotPlugin extends Plugin {
 	
 	@Override
 	public void pulse(ClientState clientState, Me me, Indexer<GameEntity> entities) {
-		if (NativeKeyUtils.isKeyDown(Settings.SPIN_BOT_TOGGLE)/* && !scaleFormModule().readBoolean(bCursorEnabled)*/) {
+		if (NativeKeyUtils.isKeyDown(Settings.SPIN_BOT_TOGGLE) && !me.getCursorEnabled()) {
 			if (lastTarget == null) {
 				while (lastTarget == null) {
 					if (lastIdx + 1 >= entities.size()) {
@@ -69,8 +69,8 @@ public final class SpinBotPlugin extends Plugin {
 						} else {
 							lastTarget = null;
 						}
-					} catch (Throwable ignored) {
-						ignored.printStackTrace();
+					} catch (Throwable throwable) {
+						throwable.printStackTrace();
 					}
 				}
 			}

@@ -21,6 +21,8 @@ import org.xena.offsets.OffsetManager.clientModule
 import org.xena.offsets.OffsetManager.process
 import org.xena.offsets.offsets.ClientOffsets.dwEntityList
 import org.xena.offsets.offsets.ClientOffsets.dwLocalPlayer
+import org.xena.offsets.offsets.ClientOffsets.dwMouseEnable
+import org.xena.offsets.offsets.ClientOffsets.dwMouseEnablePtr
 import org.xena.offsets.offsets.EngineOffsets.m_bCanReload
 import org.xena.offsets.offsets.NetVarOffsets.hActiveWeapon
 import org.xena.offsets.offsets.NetVarOffsets.hMyWeapons
@@ -40,6 +42,9 @@ class Me : Player() {
 		private set
 	
 	var shotsFired: Long = 0
+		private set
+	
+	var cursorEnabled: Boolean = true
 		private set
 	
 	override fun update() {
@@ -66,6 +71,9 @@ class Me : Player() {
 		}
 		
 		shotsFired = process().readUnsignedInt(address() + iShotsFired)
+		
+		val cursorEnablePtr = clientModule().address() + dwMouseEnablePtr
+		cursorEnabled = clientModule().readInt(dwMouseEnable.toLong()) xor cursorEnablePtr.toInt() != 1
 	}
 	
 	override fun processWeapon(weaponAddress: Long, index: Int, active: Boolean): Int {

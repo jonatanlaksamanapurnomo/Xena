@@ -132,6 +132,6 @@ public final class Overlay extends JWindow {
 	}
 	
 	private String getStatus() {
-		return "<html>Status: Running<br>Cycle: " + xena.getLastCycle() + "(max=" + Xena.CYCLE_TIME + ")<br>Game mode: " + xena.getGameMode() + ")<br>State: " + xena.getState().toString() + "</html>".intern();
+		return "<html>Status: Running<br>Cycle: " + xena.getLastCycle() + "(max=" + Xena.CYCLE_TIME + ")<br>Game mode: " + xena.getGameMode() + "<br>State: " + xena.getState().toString() + "</html>".intern();
 	}
 }

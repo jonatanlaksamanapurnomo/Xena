@@ -31,29 +31,25 @@ import org.xena.offsets.offsets.NetVarOffsets;
 public final class OffsetManager {
 	
 	private static Process process;
-	private static Module clientModule, engineModule, scaleFormModule;
+	private static Module clientModule, engineModule;
 	
 	static {
 		StringBuilder procBaseName = new StringBuilder("csgo");
 		StringBuilder clientBaseName = new StringBuilder("client_panorama");
 		StringBuilder engineBaseName = new StringBuilder("engine");
-		StringBuilder scaleFormBaseName = new StringBuilder("scaleformui");
 		
 		if (Platform.isWindows()) {
 			procBaseName.append(".exe");
 			clientBaseName.append(".dll");
 			engineBaseName.append(".dll");
-			scaleFormBaseName.append(".dll");
 		} else if (Platform.isLinux()) {
 			procBaseName.append("_linux");
 			clientBaseName.append("_client.so");
 			engineBaseName.append("_client.so");
-			scaleFormBaseName.append("_client.so");
 		} else if (Platform.isMac()) {
 			procBaseName.append("_osx");
 			clientBaseName.append(".dylib");
 			engineBaseName.append(".dylib");
-			scaleFormBaseName.append(".dylib");
 		} else {
 			throw new RuntimeException("Unsupported operating system type!");
 		}
@@ -61,12 +57,10 @@ public final class OffsetManager {
 		String processName = procBaseName.toString();
 		String clientName = clientBaseName.toString();
 		String engineName = engineBaseName.toString();
-		String scaleFormName = scaleFormBaseName.toString();
 		
 		waitUntilFound("process", () -> (process = Processes.byName(processName)) != null);
 		waitUntilFound("client module", () -> (clientModule = process.findModule(clientName)) != null);
 		waitUntilFound("engine module", () -> (engineModule = process.findModule(engineName)) != null);
-		//waitUntilFound("scale form module", () -> (scaleFormModule = process.findModule(scaleFormName)) != null);
 	}
 	
 	public static void initAll() {
@@ -100,10 +94,6 @@ public final class OffsetManager {
 	
 	public static Module engineModule() {
 		return engineModule;
-	}
-	
-	public static Module scaleFormModule() {
-		return scaleFormModule;
 	}
 	
 	private static void waitUntilFound(String message, Clause clause) {
