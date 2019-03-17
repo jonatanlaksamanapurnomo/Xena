@@ -22,15 +22,15 @@ import java.lang.management.ManagementFactory;
 
 public final class Main {
 	
-	private static final String logo = "__  __                \n" + "\\ \\/ /___ _ __   __ _ \n" + " \\  // _ \\ '_ \\ / _` |\n" + " /  \\  __/ | | | (_| |\n" + "/_/\\_\\___|_| |_|\\__,_|\n" + "A free, open-source CS:GO cheating platform\n";
-	
+//	private static final String logo = "__  __                \n" + "\\ \\/ /___ _ __   __ _ \n" + " \\  // _ \\ '_ \\ / _` |\n" + " /  \\  __/ | | | (_| |\n" + "/_/\\_\\___|_| |_|\\__,_|\n" + "A free, open-source CS:GO cheating platform\n";
+	private static final String logo = "Charlatano lite";
+	private static final String desc = "A simple and light weight  csgo cheat , made with java";
 	public static void main(String... args) throws InterruptedException {
 		System.setProperty("jna.nosys", "true");
 		System.out.println(ManagementFactory.getRuntimeMXBean().getName());
 		System.out.println(logo);
-		
+		System.out.println(desc);
 		OffsetManager.initAll();
-		
 		Xena.run(Xena.CYCLE_TIME);
 	}
 	

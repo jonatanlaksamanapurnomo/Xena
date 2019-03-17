@@ -74,7 +74,7 @@ public final class Overlay extends JWindow {
 		});
 		
 		int height = 0;
-		JLabel title = new JLabel("Xena", SwingConstants.CENTER);
+		JLabel title = new JLabel("Charlatano Lite", SwingConstants.CENTER);
 		title.setFont(new Font("Sans Serif", Font.BOLD, 16));
 		title.setOpaque(true);
 		title.setBackground(new Color(61, 61, 61));
