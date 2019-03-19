@@ -12,13 +12,14 @@ public final class Settings {
 	
 	public static final boolean DEBUG = true;
 	
-	public static final Bones TARGET_BONE = Bones.HEAD;
+	public static final Bones TARGET_BONE2 = Bones.HEAD;
+	public static final Bones TARGET_BONE = Bones.UPPER_CHEST;
 	
 	/**
 	 * Aim assist settings
 	 */
 	public static final float AIM_ASSIST_STRENGTH = 40f;
-	public static final int AIM_ASSIST_FOV = 180;
+	public static final int AIM_ASSIST_FOV = 190;
 	
 	/**
 	 * Force aim settings
@@ -31,7 +32,7 @@ public final class Settings {
 	 * Spin Bot assist settings
 	 */
 	public static final float SPIN_BOT_STRENGTH = 40f;
-	public static final int SPIN_BOT_TOGGLE = NativeKeyUtils.LEFT_CTRL;
+	public static final int SPIN_BOT_TOGGLE = NativeKeyUtils.LEFT_ALT;
 	
 	/**
 	 * GUI settings

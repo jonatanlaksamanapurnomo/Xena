@@ -20,6 +20,7 @@ import org.xena.Indexer;
 import org.xena.Xena;
 import org.xena.cs.ClientState;
 import org.xena.cs.GameEntity;
+import org.xena.cs.GameEntityBody;
 import org.xena.cs.Me;
 import org.xena.keylistener.GlobalKeyboard;
 import org.xena.keylistener.NativeKeyCombination;
@@ -70,6 +71,7 @@ public abstract class Plugin {
 	}
 	
 	public abstract void pulse(ClientState clientState, Me me, Indexer<GameEntity> entities);
+//	public abstract void pulse2(ClientState clientState, Me me, Indexer<GameEntityBody> entities);
 	
 	public int uid() {
 		return uid;

@@ -35,10 +35,7 @@ import org.xena.offsets.offsets.NetVarOffsets.vecViewOffset
 import org.xena.plugin.utils.Vector
 import java.lang.Math.abs
 import org.xena.keylistener.NativeKeyUtils
-open class GameEntity : GameObject() {
-
-
-	var bone=	Settings.TARGET_BONE2
+open class GameEntityBody : GameObject() {
 	
 	var model: Long = 0
 		protected set
@@ -102,8 +99,8 @@ open class GameEntity : GameObject() {
 		if (boneMatrix > 0) {
 			//Bones bone = Bones.roll();
 			//deafult
-
-
+			val bone = Settings.TARGET_BONE2
+			
 
 			try {
 				bones.x = process().readFloat(boneMatrix + (0x30 * bone.id) + 0x0C)
@@ -138,17 +135,6 @@ open class GameEntity : GameObject() {
 		isSpotted = result != 0L
 		
 		return isSpotted as Boolean
-	}
-	fun changeBone() : Bones {
-		if(NativeKeyUtils.isKeyDown(NativeKeyUtils.RIGHT_ALT)){
-			 return Settings.TARGET_BONE
-		}
-		else{
-
-			return Settings.TARGET_BONE2
-		}
-
-
 	}
 	
 	fun distanceTo(vector: Vector, target: Vector) = abs(vector.x - target.x) + abs(vector.y - target.y) + abs(vector.z - target.z)

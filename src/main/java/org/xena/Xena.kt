@@ -74,9 +74,9 @@ object Xena : NativeKeyListener {
 	fun run(cycleMS: Int) {
 		pluginManager.add(RadarPlugin()); //This may cause bans be careful
 		pluginManager.add(GlowESPPlugin())
-		pluginManager.add(ForceAimPlugin())
-		pluginManager.add(SkinChangerPlugin())
-		//pluginManager.add(SpinBotPlugin())
+//		pluginManager.add(ForceAimPlugin())
+//		pluginManager.add(SkinChangerPlugin())
+		pluginManager.add(SpinBotPlugin())
 		pluginManager.add(NoFlashPlugin())
 		pluginManager.add(AimAssistPlugin())
 		pluginManager.add(BunnyHopPlugin())

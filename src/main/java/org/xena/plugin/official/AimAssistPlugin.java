@@ -30,7 +30,7 @@ import org.xena.plugin.utils.Vector;
 @PluginManifest(name = "Aim Assist", description = "Helps you to stay on target.")
 public final class AimAssistPlugin extends Plugin {
 	
-	private final AngleUtils aimHelper = new AngleUtils(this, Settings.AIM_ASSIST_STRENGTH, 1.7F, 2.5F, 1.7F, 2.5F);
+	private final AngleUtils aimHelper = new AngleUtils(this, Settings.AIM_ASSIST_STRENGTH, 1.7F, 2.0F, 1.7F, 2.0F);
 	private final Vector aim = new Vector();
 	private long prevFired = 0;
 	private Player lastTarget = null;
