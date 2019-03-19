@@ -53,3 +53,6 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile 'com.github.jonatino:Java-Memory-Manipulation:2.1.2'
 }
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
